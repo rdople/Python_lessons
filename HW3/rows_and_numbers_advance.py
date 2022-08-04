@@ -34,5 +34,3 @@ print(f"Also, I can help you to spell your own name backwards, like this: {user_
 
 
 
-
-
