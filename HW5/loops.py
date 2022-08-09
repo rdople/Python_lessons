@@ -4,7 +4,8 @@ is_vowel = ""
 is_space = " "
 up_symbols = ""
 space_index = ""
-user_input = "S f-FaGA a"
+is_digit = 0
+user_input = "S f-FaGA a4586"
 for index, value in enumerate(user_input):
     if value.isupper():
         counter += value
@@ -14,11 +15,12 @@ for index, value in enumerate(user_input):
     if value == is_space:
         space_index += str(index) + ","
 
-
     if value in vowels:
         is_vowel += value
 
-     # if value.
+    if value.isdigit():
+        # is_digit += is_digit + index
+        print(f"{index=}, {value}")
 
 print(f"Uppercase symbols: {up_symbols} \n"
       f"Space indexes if it's True: {space_index[:-1]} \n"
