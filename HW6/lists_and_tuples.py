@@ -12,32 +12,43 @@
 #   Елемент типу str у якому лише цифри. Додатково помножити на 3. Приклад, елемент "2" -> "6"
 #   В інших випадках замість елемента підстав число -1
 
+
 # First task
+# you can use example text for checking
+# Девки в озере купались, торт резиновый нашли. Целый день они питались, даже в школу не пошли.
+# Expected result "['озере', 'резиновый', 'день', 'даже', 'не']"
 user_input = input("Please enter some sentence:").split(" ")
-print(f"Every third word: {user_input[2::3]}")
+print(f"Every third word: {user_input[2::3]}\n")
 
-#next task
+#Next task
 incoming_list = [1, 2.1, "f", "2", 3, "1", 18, "df"]
-# result_list = []
-for i, value in enumerate(incoming_list):
-    if value % 2 == 0:
-        value = value
-        else:
-        print(value)
-print(result_list)
+result_list = []
+for value in incoming_list:
+    if type(value) == float:
+        result_list.append(value)
 
-# result2 = []
-# for i in list1:
-#     if i > 5:
-#         result2.append(i ** 2)
-#     else:
-#         result2.append(i)
-#
-# print(f"{result2=}")
-#
-#
-#
-#
+    elif type(value) == int and value % 2 == 0:
+        result_list.append(value)
+
+    elif type(value) == int and value % 2 != 0:
+        value **= 2
+        result_list.append(value)
+
+    elif type(value) == str and value.isdigit():
+        value = int(value) * 3
+        result_list.append(str(value))
+
+    else:
+        value = -1
+        result_list.append(value)
+
+print(f"--Next task result--\n"
+      f"Information to check:\n"
+      f"Expected list by task: [1, 2.1, -1, '6', 9, '3', 18, -1]\n"
+      f"Formatted result list: {result_list}")
+
+
+
 
 
 
