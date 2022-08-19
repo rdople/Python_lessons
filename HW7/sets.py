@@ -12,12 +12,12 @@
 
 first_user_input = set(input("Please, type something: "))
 second_user_input = set(input("Type something again, it's not a joke): "))
-common_letters = {el for el in first_user_input.intersection(second_user_input)
-                  if el.isalpha()}
-unique_numbers = {el for el in first_user_input.symmetric_difference(second_user_input)
-                  if el.isdigit()}
-print(f"{common_letters=}")
-print(f"{unique_numbers=}")
+common_letters = [el for el in first_user_input.intersection(second_user_input)
+                  if el.isalpha()]
+unique_numbers = [el for el in first_user_input.symmetric_difference(second_user_input)
+                  if el.isdigit()]
+print(f"{common_letters=}", type(common_letters))
+print(f"{unique_numbers=}", type(unique_numbers))
 
 
 
