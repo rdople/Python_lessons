@@ -30,10 +30,16 @@ while True:
     except ValueError as error:
         print("Enter only digits")
 
+# First variant
 for element in non_encrypted_user_input:
     encrypted_user_input += chr(ord(element) + pass_key)
 
+# Second variant
+encrypted_user_input_2 = [chr(ord(element) + pass_key) for element in non_encrypted_user_input]
+encrypted_user_input_2 = "".join(encrypted_user_input_2)
+
 print(f"{non_encrypted_user_input=}")
-print(f"{encrypted_user_input=}")
+print(f"{encrypted_user_input=}", type(encrypted_user_input))
+print(f"{encrypted_user_input_2=}", type(encrypted_user_input_2))
 
 
