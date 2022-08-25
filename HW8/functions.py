@@ -64,8 +64,6 @@ def for_loop_list(loop_list):
 
 
 #     з while-циклом
-
-
 def while_loop_list(loop_list):
     # loop_list = list(input("Enter some sequence of numbers(while):"))
     print(f"{loop_list=}", type(loop_list))
