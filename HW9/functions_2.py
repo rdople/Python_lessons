@@ -12,7 +12,8 @@
 #
 # print(f"{recurs_loop_list(loop_list)=}")
 
-# fibonacci
+# Створи функцію яка обчислює числа Фібоначчі.
+# Функція приймає порядковий номер числа послідовності.
 # fib_user_input = int(input("Enter a number: "))
 #
 # def fibonacci(serial_number):
