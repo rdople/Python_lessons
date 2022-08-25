@@ -23,6 +23,7 @@ def int_sum(start, end):
 
 print(int_sum(number_1, number_2))
 
+
 # Створи функцію, яка відображає число секунд у вигляді дні:години:хвилини:секунди.
 # Функція може прийняти число як рядок так і як ціле число.
 
@@ -47,12 +48,13 @@ while True:
 
 time_representation(user_input_seconds)
 
-
 # Створи три функції, які обчислюють суму чисел у списку cycles_list
 # #     з for-циклом
+loop_list = list(input("Enter some sequence of numbers:"))
 
-def for_loop_list():
-    loop_list = list(input("Enter some sequence of numbers(for):"))
+
+def for_loop_list(loop_list):
+    # loop_list = list(input("Enter some sequence of numbers(for):"))
     print(f"{loop_list=}", type(loop_list))
     sum_for = 0
     for x in loop_list:
@@ -64,8 +66,8 @@ def for_loop_list():
 #     з while-циклом
 
 
-def while_loop_list():
-    loop_list = list(input("Enter some sequence of numbers(while):"))
+def while_loop_list(loop_list):
+    # loop_list = list(input("Enter some sequence of numbers(while):"))
     print(f"{loop_list=}", type(loop_list))
     counter = 0
     sum_while = 0
@@ -77,5 +79,5 @@ def while_loop_list():
     return None
 
 
-for_loop_list()
-while_loop_list()
+for_loop_list(loop_list)
+while_loop_list(loop_list)
