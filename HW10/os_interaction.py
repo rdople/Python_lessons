@@ -19,5 +19,5 @@ obj = {
 
 with open("os_report.json", "w") as fh:
     json.dump(obj, fh)
-print(os.environ)
-os.startfile("os_report.json")
+# print(os.environ)
+# os.startfile("os_report.json") #відкриває записаний файл
