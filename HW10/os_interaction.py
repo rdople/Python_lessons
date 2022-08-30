@@ -12,7 +12,7 @@ obj = {
     "user_name": os.environ["USERNAME"],
     "system_drive": os.environ["SYSTEMDRIVE"],
     "system_root": os.environ["SYSTEMROOT"],
-    "number_of_processors": os.environ["NUMBER_OF_PROCESSORS"],
+    "number_of_processors": os.environ["NUMBER_OF_PROCESSORS"], #or os.cpu_count( )
     "processor_identifier": os.environ["PROCESSOR_IDENTIFIER"],
     "processor_revision": os.environ["PROCESSOR_REVISION"]
 }
