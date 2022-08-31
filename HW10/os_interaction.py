@@ -5,11 +5,18 @@
 
 import os
 import json
+import getpass
+import socket
+from uuid import getnode as get_mac
+import psutil
 
 obj = {
+    "user_name": getpass.getuser(),
+    "ip": socket.gethostbyname(socket.getfqdn()),
+    "mac": get_mac(),
+    "cpu_freq": psutil.cpu_freq(),
     "os": os.environ["OS"],
     "computer_name": os.environ["COMPUTERNAME"],
-    "user_name": os.environ["USERNAME"],
     "system_drive": os.environ["SYSTEMDRIVE"],
     "system_root": os.environ["SYSTEMROOT"],
     "number_of_processors": os.environ["NUMBER_OF_PROCESSORS"], #or os.cpu_count( )
@@ -17,7 +24,7 @@ obj = {
     "processor_revision": os.environ["PROCESSOR_REVISION"]
 }
 
-with open("os_report.json", "w") as fh:
-    json.dump(obj, fh)
-# print(os.environ)
-# os.startfile("os_report.json") #відкриває записаний файл
+with open("os_report.json", "w+") as fh:
+    json.dump(obj, fh, sort_keys=True)
+print(obj)
+os.startfile("os_report.json") #відкриває записаний файл
