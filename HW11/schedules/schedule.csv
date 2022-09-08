@@ -1,0 +1,9 @@
+departure point,departure time,destination point,arrival time,cost ticket
+Kyiv,09:44:00,Rome FCO,17:25:00,17433
+Kharkiv,09:56:00,Warsaw WMI,17:25:00,13345
+Mariupol,10:00:00,Warsaw WMI,17:25:00,120975
+Odesa,09:36:00,Munich MUC,17:30:00,50478
+Lviv,09:46:00,Kaunas KUN,17:40:00,22789
+Donetsk,09:51:00,Barcelona BCN,17:15:00,123456
+Dnipro,10:26:00,Ibiza IBZ,17:53:00,5000
+Sumy,10:01:00,Santiago SCL,17:51:00,25006
