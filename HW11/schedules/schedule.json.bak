@@ -1,0 +1,58 @@
+[
+    {
+        "arrival time": "17:25:00",
+        "cost ticket": "17433",
+        "departure point": "Kyiv",
+        "departure time": "09:44:00",
+        "destination point": "Rome FCO"
+    },
+    {
+        "arrival time": "17:25:00",
+        "cost ticket": "13345",
+        "departure point": "Kharkiv",
+        "departure time": "09:56:00",
+        "destination point": "Warsaw WMI"
+    },
+    {
+        "arrival time": "17:25:00",
+        "cost ticket": "120975",
+        "departure point": "Mariupol",
+        "departure time": "10:00:00",
+        "destination point": "Warsaw WMI"
+    },
+    {
+        "arrival time": "17:30:00",
+        "cost ticket": "50478",
+        "departure point": "Odesa",
+        "departure time": "09:36:00",
+        "destination point": "Munich MUC"
+    },
+    {
+        "arrival time": "17:40:00",
+        "cost ticket": "22789",
+        "departure point": "Lviv",
+        "departure time": "09:46:00",
+        "destination point": "Kaunas KUN"
+    },
+    {
+        "arrival time": "17:15:00",
+        "cost ticket": "123456",
+        "departure point": "Donetsk",
+        "departure time": "09:51:00",
+        "destination point": "Barcelona BCN"
+    },
+    {
+        "arrival time": "17:53:00",
+        "cost ticket": "5000",
+        "departure point": "Dnipro",
+        "departure time": "10:26:00",
+        "destination point": "Ibiza IBZ"
+    },
+    {
+        "arrival time": "17:51:00",
+        "cost ticket": "25006",
+        "departure point": "Sumy",
+        "departure time": "10:01:00",
+        "destination point": "Santiago SCL"
+    }
+]
