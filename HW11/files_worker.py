@@ -53,6 +53,7 @@ def csv_to_dict(filename):
     print(converted_list)
     return converted_list
 
+
 convert_dict = csv_to_dict(file_path_csv)
 
 #Створи функцію яка записує отриманий контент до файлу schedules/schedule.json
@@ -63,6 +64,7 @@ convert_dict = csv_to_dict(file_path_csv)
 def csv_result_to_json(object_to_file):
     with open(file_path_json, "w") as fh:
         json.dump(object_to_file, fh, indent=4, sort_keys=True)
+    return None
 
 
 csv_result_to_json(convert_dict)
