@@ -27,4 +27,4 @@ obj = {
 with open("os_report.json", "w+") as fh:
     json.dump(obj, fh, sort_keys=True)
 print(obj)
-os.startfile("os_report.json") #відкриває записаний файл
+os.startfile("os_report.json") #відкриває записаний файл_
