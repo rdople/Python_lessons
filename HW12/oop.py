@@ -48,6 +48,43 @@ class Warrior:
         print(f"Another good man dies young")
 
 
+knight = Warrior(warrior_name='knight',
+                 warrior_classification='infantry',
+                 unit_type='human',
+                 damage=randint(7, 10),
+                 health=35,
+                 defence=3,
+                 population=4
+                 )
+
+archer = Warrior(warrior_name='archer',
+                 warrior_classification='shooter',
+                 unit_type='human',
+                 damage=randint(10, 12),
+                 health=30,
+                 defence=3,
+                 population=6
+                 )
+
+vampire = Warrior(warrior_name='vampire',
+                  warrior_classification='infantry',
+                  unit_type='undead',
+                  damage=randint(5, 8),
+                  health=40,
+                  defence=3,
+                  population=4
+                  )
+
+warlock = Warrior(warrior_name='warlock',
+                  warrior_classification='shooter',
+                  unit_type='undead',
+                  damage=randint(11, 15),
+                  health=40,
+                  defence=3,
+                  population=6
+                  )
+
+
 class Army:
     unit_type: str
     total_damage: int
@@ -124,43 +161,6 @@ class Army:
         self.get_total_data_army()
         return self.warrior_2_health
 
-
-knight = Warrior(warrior_name='knight',
-                 warrior_classification='infantry',
-                 unit_type='human',
-                 damage=randint(7, 10),
-                 health=35,
-                 defence=12,
-                 population=4
-                 )
-
-archer = Warrior(warrior_name='archer',
-                 warrior_classification='shooter',
-                 unit_type='human',
-                 damage=randint(10, 12),
-                 health=30,
-                 defence=10,
-                 population=6
-                 )
-
-vampire = Warrior(warrior_name='vampire',
-                  warrior_classification='infantry',
-                  unit_type='undead',
-                  damage=randint(5, 8),
-                  health=40,
-                  defence=8,
-                  population=4
-                  )
-
-warlock = Warrior(warrior_name='warlock',
-                  warrior_classification='shooter',
-                  unit_type='undead',
-                  damage=randint(11, 15),
-                  health=40,
-                  defence=8,
-                  population=6
-                  )
-
 humans = Army(knight.unit_type,
               knight.warrior_name,
               knight.damage,
@@ -186,19 +186,21 @@ undeads = Army(vampire.unit_type,
                warlock.population
                )
 
-# humans.get_total_data_army()
-# undeads.get_total_data_army()
+
+total_human = humans.print_total_data_army()
+total_undeads = undeads.print_total_data_army()
+
 # print(f"{humans.get_population()=}")
 # print(f"{undeads.get_population()=}")
 
 
 def battle(army1, army2):
-    # while True:
-        # army1.get_population() > 0 or army2.get_population() > 0:
-        print(f"{army1.get_total_data_army()=}")
+    # while army1.get_population() > 0 or army2.get_population() > 0:
+        print(f"{army1.warrior_1_health=}")
+        army1.warrior_1_health -= (army2.warrior_1_damage + army1.warrior_1_defence)
+        print(f"{army1.warrior_1_health=}")
         army1.self_medication_1()
-        army1.self_medication_2()
-        print(f"{army1.get_total_data_army()=}")
+        print(f"{army1.warrior_1_health=}")
 
 
 
