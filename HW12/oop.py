@@ -1,210 +1,116 @@
-# За допомогою ООП створи дві армії. В кожній кілька класів юнитів:
-# Маг, Лучник, Лицар, додай ще за бажанням. Юнити мають як загальні якості, наприклад рівень здоров'я,
-# так і класові, наприклад діапазон рівеня атаки, тип атаки, тип броні
-# Кожна армія по черзі наносить атаку юніту ворожої армії, або лікує юніта своєї армію,
-# в залежності від класу юніта (наприклад, маг може атакувати або лікувати)
-# За бажанням, додай випадковості, наприклад
-#     Атака з діапазону рівня атаки класу
-#     Лікування з діапазону рівня лікування
-#     Вибір між лікуванням або атакою
-#     Частка урону яку поглинає броня
-#     Можливість критичного удару
-# Так почнеться битва!
-#
 from random import randint
 
 
 class Warrior:
-    unit_type: str
-    warrior_name: str
-    warrior_classification: str
-    damage: int = 0
-    health: int = 0
-    defence: int = 0
-    population: int = 0
 
-    def __init__(self, warrior_name: str, warrior_classification: str, unit_type: str, damage: int,
-                 health: int, defence: int, population: int):
-        self.unit_type: str = unit_type
-        self.warrior_name: str = warrior_name
-        self.warrior_classification: str = warrior_classification
-        self.damage: int = damage
-        self.health: int = health
-        self.defence: int = defence
-        self.population: int = population
+    def __init__(self):
+        self.type = 'Нalberdier'
+        self.health = 10
+        # self.defence = randint(3, 5)
+        # self.attack = randint(2, 3)
+        self.defence = 3
+        self.attack = 6
+
+    @property
+    def is_not_defeated(self) -> bool:
+        if self.health <= 0:
+            print(f"Another good man {self.type}  dies young ")
+        return self.health > 0
 
     def self_medication(self):
-        healing = randint(0, 5)
-        self.health += healing
-        if healing != 0:
-            print(f"The {self.warrior_name} has got some medics + {healing} and total health = {self.health}")
+        if self.health <= 0:
+            print(f"This {self.type} fighter tried to heal, but nothing will help him. Sad story((\n")
+        if self.health > 15:
+            pass
+        else:
+            healing = randint(0, 3)
+            self.health += healing
+            if healing != 0:
+                print(f"{self.type} has got some medics + {healing} and total health = {self.health}\n")
+
         return self.health
 
-    def get_population(self) -> int:
-        return self.population
 
-    def defeated_warrior(self) -> None:
-        self.population -= 1
-        print(f"Another good man dies young")
+class Skeleton(Warrior):
+
+    def __init__(self):
+        super().__init__()
+        self.type = 'Skeleton'
+        self.health = 10
+        # self.defence = randint(4, 6)
+        # self.attack = randint(1, 3)
+        self.defence = 3
+        self.attack = 6
 
 
-knight = Warrior(warrior_name='knight',
-                 warrior_classification='infantry',
-                 unit_type='human',
-                 damage=randint(7, 10),
-                 health=35,
-                 defence=3,
-                 population=4
-                 )
+def fight(unit_1, unit_2) -> bool:
+    while unit_1.is_not_defeated and unit_2.is_not_defeated:
+        unit_2.health -= (unit_1.attack - unit_2.defence)
+        unit_1_real_damage = (unit_1.attack - unit_2.defence)
+        print(f"Our hero {unit_1.type} attacks {unit_2.type} with {unit_1.attack} damage points.\n"
+              f"Enemy's armor absorbed {unit_2.defence} damage points\n"
+              f"So, real damage was: {unit_1_real_damage} points and left him: "
+              f"{unit_2.health} points health to enemy\n")
+        unit_2.self_medication()
 
-archer = Warrior(warrior_name='archer',
-                 warrior_classification='shooter',
-                 unit_type='human',
-                 damage=randint(10, 12),
-                 health=30,
-                 defence=3,
-                 population=6
-                 )
+        unit_2_real_damage = (unit_2.attack - unit_2.defence)
+        unit_1.health -= (unit_2.attack - unit_1.defence)
+        print(f"The enemy {unit_2.type} tries to damage our "
+              f"{unit_1.type} with {unit_2.attack} damage points and "
+              f"Our armor absorbed {unit_1.defence} damage points\n"
+              f"So, real damage was: {unit_2_real_damage} points and left him: "
+              f"{unit_2.health} points health to enemy\n") and unit_1.self_medication()\
+            if unit_2.is_not_defeated else 0
 
-vampire = Warrior(warrior_name='vampire',
-                  warrior_classification='infantry',
-                  unit_type='undead',
-                  damage=randint(5, 8),
-                  health=40,
-                  defence=3,
-                  population=4
-                  )
-
-warlock = Warrior(warrior_name='warlock',
-                  warrior_classification='shooter',
-                  unit_type='undead',
-                  damage=randint(11, 15),
-                  health=40,
-                  defence=3,
-                  population=6
-                  )
+    return unit_1.is_not_defeated
 
 
 class Army:
-    unit_type: str
-    total_damage: int
-    total_health: int
-    total_defence: int
-    total_population: int
-    warrior_1_name: str
-    warrior_1_damage: int
-    warrior_1_health: int
-    warrior_1_defence: int
-    warrior_1_population: int
-    warrior_2_name: str
-    warrior_2_damage: int
-    warrior_2_health: int
-    warrior_2_defence: int
-    warrior_2_population: int
 
-    def __init__(self, unit_type: str, warrior_1_name: str, warrior_1_damage: int, warrior_1_health: int,
-                 warrior_1_defence: int, warrior_1_population: int,warrior_2_name: str, warrior_2_damage: int,
-                 warrior_2_health: int, warrior_2_defence: int, warrior_2_population: int):
-        self.unit_type: str = unit_type
-        self.warrior_1_name: str = warrior_1_name
-        self.warrior_1_damage: int = warrior_1_damage
-        self.warrior_1_health: int = warrior_1_health
-        self.warrior_1_defence: int = warrior_1_defence
-        self.warrior_1_population: int = warrior_1_population
-        self.warrior_2_name: str = warrior_2_name
-        self.warrior_2_damage: int = warrior_2_damage
-        self.warrior_2_health: int = warrior_2_health
-        self.warrior_2_defence: int = warrior_2_defence
-        self.warrior_2_population: int = warrior_2_population
-        self.get_total_data_army()
+    def __init__(self, name):
+        self.list = []
+        self.name = name
 
-    def get_total_data_army(self):
-        self.total_damage = \
-            (self.warrior_1_damage * self.warrior_1_population) + (self.warrior_2_damage * self.warrior_2_population)
-        self.total_health =\
-            (self.warrior_1_health * self.warrior_1_population) + (self.warrior_2_health * self.warrior_2_population)
-        self.total_defence =\
-            (self.warrior_1_defence * self.warrior_1_population) + (self.warrior_2_defence * self.warrior_2_population)
-        self.total_population =\
-            self.warrior_1_population + self.warrior_2_population
-        return self.total_health, self.total_defence, self.total_population, self.total_damage
+    def __str__(self):
+        return f"from {self.name}\n"
 
-    def print_total_data_army(self):
-        print(f"{self.unit_type} army total info:")
-        print(f"{self.total_damage=}")
-        print(f"{self.total_health=}")
-        print(f"{self.total_defence=}")
-        print(f"{self.total_population=}\n")
-
-    def get_population(self) -> int:
-        return self.total_population
-
-    def defeated_warrior(self) -> None:
-        self.total_population -= 1
-        print(f"Another good man dies young")
-
-    def self_medication_1(self):
-        healing = randint(0, 5)
-        self.warrior_1_health += healing
-        if healing != 0:
-            print(f"The {self.warrior_1_name} has got some medics + {healing} "
-                  f"and total health = {self.warrior_1_health}")
-        self.get_total_data_army()
-        return self.warrior_1_health
-
-    def self_medication_2(self):
-        healing = randint(0, 5)
-        self.warrior_2_health += healing
-        if healing != 0:
-            print(f"The {self.warrior_2_name} has got some medics + {healing} "
-                  f"and total health = {self.warrior_2_health}")
-        self.get_total_data_army()
-        return self.warrior_2_health
-
-humans = Army(knight.unit_type,
-              knight.warrior_name,
-              knight.damage,
-              knight.health,
-              knight.defence,
-              knight.population,
-              archer.warrior_name,
-              archer.damage,
-              archer.health,
-              archer.defence,
-              archer.population
-              )
-undeads = Army(vampire.unit_type,
-               vampire.warrior_name,
-               vampire.damage,
-               vampire.health,
-               vampire.defence,
-               vampire.population,
-               warlock.warrior_name,
-               warlock.damage,
-               warlock.health,
-               warlock.defence,
-               warlock.population
-               )
+    def add_units(self, unit, amount):
+        self.list += [unit() for k in range(amount)]
 
 
-total_human = humans.print_total_data_army()
-total_undeads = undeads.print_total_data_army()
+    @property
+    def are_there_warriors(self) -> bool:
+        return self.list != []
 
-# print(f"{humans.get_population()=}")
-# print(f"{undeads.get_population()=}")
+    @property
+    def is_present_warrior(self):
+        return self.list[0]
 
-
-def battle(army1, army2):
-    # while army1.get_population() > 0 or army2.get_population() > 0:
-        print(f"{army1.warrior_1_health=}")
-        army1.warrior_1_health -= (army2.warrior_1_damage + army1.warrior_1_defence)
-        print(f"{army1.warrior_1_health=}")
-        army1.self_medication_1()
-        print(f"{army1.warrior_1_health=}")
+    @property
+    def pop(self):
+        print(f"{self.name} defeated")
+        self.list.pop(0)
 
 
 
-#
-battle(humans, undeads)
+class War:
+    def fight(self, army_1, army_2) -> bool:
+        print(f"Let's start our sacred war!")
+        print(f"*********************************************\n")
+        while army_1.are_there_warriors and army_2.are_there_warriors:
+            if fight(army_1.is_present_warrior, army_2.is_present_warrior):
+                army_2.pop
+            else:
+                army_1.pop
+        return army_1.are_there_warriors
 
 
+humans = Army("Army_of_Humans")
+humans.add_units(Warrior, 1)
+
+
+undeads = Army("Army_of_Undeads")
+undeads.add_units(Skeleton, 1)
+
+war = War()
+war.fight(humans, undeads)
